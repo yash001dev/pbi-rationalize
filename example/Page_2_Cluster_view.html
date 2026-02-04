@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Page_2_Cluster_view</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 20
+        }
+        .heatmap-cell {
+            opacity: var(--tw-bg-opacity);
+            background-color: rgb(19 127 236 / var(--tw-bg-opacity));
+        }
+        .heatmap-cell[style*="--tw-bg-opacity: 1"] { color: white; }
+        .heatmap-cell[style*="--tw-bg-opacity: 0.95"] { color: white; }
+        .heatmap-cell[style*="--tw-bg-opacity: 0.9"] { color: white; }
+        .heatmap-cell[style*="--tw-bg-opacity: 0.85"] { color: white; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#323130] dark:text-white">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-b-[#283039] px-6 md:px-10 py-3 bg-white dark:bg-[#111418]">
+<div class="flex items-center gap-4 text-gray-800 dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-white">Redundancy Tool</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-center items-center gap-9">
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">Dashboard</a>
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">Reports</a>
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">Settings</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-2">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-gray-100 dark:bg-[#283039] text-gray-600 dark:text-white hover:bg-gray-200 dark:hover:bg-primary/20">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-gray-100 dark:bg-[#283039] text-gray-600 dark:text-white hover:bg-gray-200 dark:hover:bg-primary/20">
+<span class="material-symbols-outlined text-xl">help</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDAxhhRyF3n_pCYJkyqaUnh6Kk9g9954jGQEwOHI0wXn3MVD1lui68r2W36gst0l0oF8tJW1N5WD6KI97zTXMNm51f-RpE4Isbx3nkVfIEpbQJQwEajb7cRK7unZVpLyNNK9_8nrt7RrLDeC7aF4kUQqW-r_EJhOFltHcmvDa3ah7-GwwT0E6xmofvHF8rN5kg13WT4VqUTc--CPCcaoAsebC0clVMp0zMj9Hec5bZNMKM72apdz5R4vekgeRK1Wu6HnjZq9xixoX0");'></div>
+</div>
+</header>
+<main class="flex h-full grow flex-col">
+<div class="flex flex-1 justify-center px-4 py-8 sm:px-6 lg:px-8">
+<div class="flex w-full max-w-7xl flex-col gap-6">
+<div class="flex flex-wrap items-center gap-2">
+<a class="text-gray-500 dark:text-[#9dabb9] hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">Redundancy Dashboard</a>
+<span class="text-gray-400 dark:text-[#9dabb9] text-sm font-medium leading-normal">/</span>
+<span class="text-gray-800 dark:text-white text-sm font-medium leading-normal">Group 2 Details</span>
+</div>
+<div class="flex flex-col md:flex-row flex-wrap items-start justify-between gap-4">
+<div class="flex min-w-72 flex-col gap-2">
+<p class="text-gray-900 dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em]">Group 2</p>
+<!--<p class="text-gray-500 dark:text-[#9dabb9] text-base font-normal leading-normal">17 Dashboards | 92% Average Similarity</p> -->
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90">
+<span class="truncate">Back</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-gray-200 dark:bg-[#283039] text-gray-800 dark:text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-gray-300 dark:hover:bg-[#3b4754]">
+<span class="truncate">Dismiss Group</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2 rounded-lg border border-gray-200 dark:border-[#3b4754] bg-white dark:bg-[#111418] p-6"><p class="text-sm font-medium text-gray-500 dark:text-[#9dabb9]">
+<!--Total Redundant Dashboards Found-->
+Total Dashboards Found </p>
+<p class="text-3xl font-bold text-gray-900 dark:text-white">5</p>
+</div>
+<div class="flex flex-col gap-4 rounded-lg border border-gray-200 dark:border-[#3b4754] bg-white dark:bg-[#111418] p-6">
+<p class="text-sm font-medium text-gray-500 dark:text-[#9dabb9]">Most Redundant KPIs</p>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between text-sm">
+<p class="font-medium text-gray-800 dark:text-white">Total Sales Revenue</p>
+<p class="text-gray-500 dark:text-[#9dabb9]">Present in 5 dashboards</p>
+</div>
+<div class="flex items-center justify-between text-sm">
+<p class="font-medium text-gray-800 dark:text-white">YoY Growth %</p>
+<p class="text-gray-500 dark:text-[#9dabb9]">Present in 5 dashboards</p>
+</div>
+<div class="flex items-center justify-between text-sm">
+<p class="font-medium text-gray-800 dark:text-white">Avg. Deal Size</p>
+<p class="text-gray-500 dark:text-[#9dabb9]">Present in 4 dashboards</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h3 class="text-xl font-bold text-gray-900 dark:text-white">Dashboard Comparison Matrix</h3>
+<div class="w-full overflow-x-auto">
+<div class="flex rounded-lg border border-gray-200 dark:border-[#3b4754] bg-white dark:bg-[#111418] p-1.5">
+<div class="flex flex-col gap-1">
+<div class="h-10"></div>
+<div class="flex h-[72px] items-center px-4 text-left text-sm font-medium text-gray-800 dark:text-white min-w-48 max-w-48 truncate">Quarterly Sales Report v1</div>
+<div class="flex h-[72px] items-center px-4 text-left text-sm font-medium text-gray-800 dark:text-white min-w-48 max-w-48 truncate">Sales Performance Q3</div>
+<div class="flex h-[72px] items-center px-4 text-left text-sm font-medium text-gray-800 dark:text-white min-w-48 max-w-48 truncate">Regional Sales - Final</div>
+<div class="flex h-[72px] items-center px-4 text-left text-sm font-medium text-gray-800 dark:text-white min-w-48 max-w-48 truncate">Sales Dashboard (Copy)</div>
+<div class="flex h-[72px] items-center px-4 text-left text-sm font-medium text-gray-800 dark:text-white min-w-48 max-w-48 truncate">Team Sales Review</div>
+</div>
+<div class="flex flex-col w-full min-w-[720px]">
+<div class="grid grid-cols-5 h-10">
+<div class="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">Quarterly Sales Report v1</div>
+<div class="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">Sales Performance Q3</div>
+<div class="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">Regional Sales - Final</div>
+<div class="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">Sales Dashboard (Copy)</div>
+<div class="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">Team Sales Review</div>
+</div>
+<div class="grid grid-cols-5 gap-1">
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 1;">100%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.98;">92%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.92;">92%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.89;">89%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.85;">85%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.98;">92%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 1;">100%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.95;">95%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.91;">91%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.88;">88%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.92;">92%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.95;">95%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 1;">100%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.86;">86%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.82;">82%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.89;">89%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.91;">91%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.86;">86%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 1;">100%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.90;">90%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.85;">85%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.88;">88%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.82;">82%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 0.90;">90%</div>
+<div class="heatmap-cell flex h-[72px] items-center justify-center rounded-lg text-sm font-medium" style="--tw-bg-opacity: 1;">100%</div>
+</div>
+</div>
+<div class="flex flex-col gap-1 w-full max-w-[480px]">
+<div class="grid grid-cols-4 h-10">
+<div class="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">Total KPIs</div>
+<div class="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">Shared KPIs</div>
+<div class="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">Unique KPIs</div>
+<div class="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">Action</div>
+</div>
+<div class="grid grid-cols-4 gap-1">
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5 text-sm">25</div>
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5 text-sm">24</div>
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5 text-sm">1</div>
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5"><a class="text-primary hover:underline text-sm font-bold" href="#">View</a></div>
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5 text-sm">25</div>
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5 text-sm">24</div>
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5 text-sm">1</div>
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5"><a class="text-primary hover:underline text-sm font-bold" href="#">View</a></div>
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5 text-sm">26</div>
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5 text-sm">23</div>
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5 text-sm">3</div>
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5"><a class="text-primary hover:underline text-sm font-bold" href="#">View</a></div>
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5 text-sm">24</div>
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5 text-sm">22</div>
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5 text-sm">2</div>
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5"><a class="text-primary hover:underline text-sm font-bold" href="#">View</a></div>
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5 text-sm">27</div>
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5 text-sm">22</div>
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5 text-sm">5</div>
+<div class="flex h-[72px] items-center justify-center rounded-md bg-gray-50 dark:bg-white/5"><a class="text-primary hover:underline text-sm font-bold" href="#">View</a></div>
+</div>
+</div>
+</div>
+</div>
+
+<p class="text-xs italic text-gray-500 dark:text-gray-400 text-right"> Note: < 90% similarity highlighted in black font</p>
+</div>
+<div class="flex flex-col gap-4">
+<h3 class="text-xl font-bold text-gray-900 dark:text-white">Similar KPI Groups</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="flex flex-col gap-4 rounded-lg border border-gray-200 dark:border-[#3b4754] bg-white dark:bg-[#111418] p-6">
+<p class="font-bold text-gray-900 dark:text-white">KPI Group 1</p>
+<div class="flex flex-col text-sm text-gray-600 dark:text-[#9dabb9]">
+<span>Total Sales Revenue</span>
+<span>YoY Growth %</span>
+<span>QoQ Growth %</span>
+</div>
+<button class="flex mt-2 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-gray-200 dark:bg-[#283039] text-gray-800 dark:text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-gray-300 dark:hover:bg-[#3b4754]">
+<span class="truncate">Inspect KPI Group</span>
+</button>
+</div>
+<div class="flex flex-col gap-4 rounded-lg border border-gray-200 dark:border-[#3b4754] bg-white dark:bg-[#111418] p-6">
+<p class="font-bold text-gray-900 dark:text-white">KPI Group 2</p>
+<div class="flex flex-col text-sm text-gray-600 dark:text-[#9dabb9]">
+<span>Avg. Deal Size</span>
+<span>Win Rate %</span>
+<span>Sales Cycle Length (Days)</span>
+</div>
+<button class="flex mt-2 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-gray-200 dark:bg-[#283039] text-gray-800 dark:text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-gray-300 dark:hover:bg-[#3b4754]">
+<span class="truncate">Inspect KPI Group</span>
+</button>
+</div>
+<div class="flex flex-col gap-4 rounded-lg border border-gray-200 dark:border-[#3b4754] bg-white dark:bg-[#111418] p-6">
+<p class="font-bold text-gray-900 dark:text-white">KPI Group 3</p>
+<div class="flex flex-col text-sm text-gray-600 dark:text-[#9dabb9]">
+<span>Sales by Region</span>
+<span>Top Performing Region</span>
+<span># of Deals by Region</span>
+</div>
+<button class="flex mt-2 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-gray-200 dark:bg-[#283039] text-gray-800 dark:text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-gray-300 dark:hover:bg-[#3b4754]">
+<span class="truncate">Inspect KPI Group</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

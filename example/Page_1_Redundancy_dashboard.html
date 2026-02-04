@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Page_1_Redundancy_dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background-light font-display text-gray-800">
+<div class="relative flex min-h-screen w-full">
+<aside class="flex h-screen min-h-full w-64 flex-col justify-between border-r border-gray-200 bg-white p-4 sticky top-0">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3 px-2">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H42L36 24L42 42H6L12 24L6 6Z"></path></svg>
+</div>
+<h1 class="text-lg font-bold tracking-tight text-gray-900">Redundancy Tool</h1>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 rounded-lg bg-primary/10 px-3 py-2 text-primary" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<p class="text-sm font-medium">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-600 hover:bg-gray-100" href="#">
+<span class="material-symbols-outlined text-lg">analytics</span>
+<p class="text-sm font-medium">Analytics</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-600 hover:bg-gray-100" href="#">
+<span class="material-symbols-outlined text-lg">settings</span>
+<p class="text-sm font-medium">Settings</p>
+</a>
+</div>
+<div class="flex flex-col gap-4 border-t border-gray-200 pt-6">
+<div class="px-0 py-0">
+<label class="flex flex-col min-w-40 h-10 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-gray-400 flex border border-gray-300 bg-gray-100 items-center justify-center pl-3 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 focus:outline-0 focus:ring-1 focus:ring-primary border border-gray-300 bg-gray-100 focus:border-primary h-full placeholder:text-gray-400 px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal" placeholder="Search by name..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-col">
+<details class="flex flex-col border-t border-gray-200 py-2 group" open="">
+<summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-2">
+<p class="text-sm font-medium text-gray-900">Filter by</p>
+<span class="material-symbols-outlined text-gray-500 group-open:rotate-180 transition-transform duration-200">expand_more</span>
+</summary>
+<div class="flex flex-col gap-3 pt-2">
+<select class="form-select w-full rounded-lg border-gray-300 bg-gray-100 text-sm focus:border-primary focus:ring-primary">
+<option>Workspace</option>
+<option>Marketing</option>
+<option>Sales</option>
+<option>Finance</option>
+</select>
+<select class="form-select w-full rounded-lg border-gray-300 bg-gray-100 text-sm focus:border-primary focus:ring-primary">
+<option>Owner</option>
+<option>Jane Doe</option>
+<option>John Smith</option>
+</select>
+</div>
+</details>
+<details class="flex flex-col border-t border-gray-200 py-2 group">
+<summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-2">
+<p class="text-sm font-medium text-gray-900">Sort by</p>
+<span class="material-symbols-outlined text-gray-500 group-open:rotate-180 transition-transform duration-200">expand_more</span>
+</summary>
+<div class="flex flex-col gap-2 pt-2 text-sm text-gray-700">
+<label class="flex items-center gap-2"><input checked="" class="form-radio text-primary focus:ring-primary" name="sort" type="radio"/> Most Similar</label>
+<label class="flex items-center gap-2"><input class="form-radio text-primary focus:ring-primary" name="sort" type="radio"/> Most Dashboards</label>
+<label class="flex items-center gap-2"><input class="form-radio text-primary focus:ring-primary" name="sort" type="radio"/> Recently Scanned</label>
+</div>
+</details>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-200 pt-4">
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-600 hover:bg-gray-100" href="#">
+<span class="material-symbols-outlined text-lg">logout</span>
+<p class="text-sm font-medium">Log Out</p>
+</a>
+</div>
+</aside>
+<main class="flex-1 max-h-screen overflow-y-auto">
+<header class="flex items-center justify-end whitespace-nowrap border-b border-gray-200 px-8 py-4 sticky top-0 bg-background-light/80 backdrop-blur-sm">
+<div class="flex items-center gap-4">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-gray-100 text-gray-600">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-gray-100 text-gray-600">
+<span class="material-symbols-outlined text-xl">help</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPG7BVwL3k0rfLIum5aGZQ-mVP2Ksc2dowpmyPbhNZI54w7kB8IQ7TIOIJ9Z8ZfEl4jG0zcM-nNqC1K-mrKf4P_4GkXP4cwOcSsUBmYT8FO46eGvJukP7diM_W5tYUGCxazKDnH1JTx6zpcw4LNr27V35MNtUyHW--Cii3yMrxN9ULa-8AL4aAfXwmJfWAAEPQlL9X6XMHZe2CNTIU_THNoekT6yGrMLBke10xRhlggDBanKf0UTw0iaZsexTqV6NX0wmk4LZPWbU");'></div>
+</div>
+</header>
+<div class="p-8">
+<h2 class="text-2xl font-bold text-gray-900">Dashboard</h2>
+<p class="text-gray-500 mt-1">An at-a-glance summary of the redundancy problem.</p>
+<div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+<div class="flex flex-col gap-2 rounded-xl p-6 border border-gray-200 bg-white">
+<p class="text-sm font-medium text-gray-600">Total Dashboards Scanned</p>
+<p class="text-3xl font-bold tracking-tight text-gray-900">1,240</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 border border-gray-200 bg-white">
+<p class="text-sm font-medium text-gray-600">Total Redundancy Groups</p>
+<p class="text-3xl font-bold tracking-tight text-gray-900">38</p>
+</div>
+</div>
+<div class="mt-8">
+<h3 class="text-xl font-bold text-gray-900">Redundancy Groups</h3>
+<div class="mt-4 grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
+<div class="flex flex-col rounded-xl border border-gray-200 bg-white overflow-hidden">
+<div class="p-6">
+<div class="flex items-center justify-between">
+<h4 class="font-semibold text-gray-900">Group 1</h4>
+<span class="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">17 Dashboards</span>
+</div>
+<p class="mt-1 text-sm font-semibold text-green-600">95% Avg. Similarity</p>
+<ul class="mt-4 space-y-2 text-sm text-gray-500">
+<li class="truncate">Finance Overview - Q3</li>
+<li class="truncate">CFO Summary</li>
+<li class="truncate">Quarterly Financials V2</li>
+<li class="truncate">Q3 Finance Report (Final)</li>
+</ul>
+</div>
+<div class="border-t border-gray-200 bg-gray-50 px-6 py-4">
+<button class="w-full flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary/90">
+                                    View Details
+                                    <span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col rounded-xl border border-gray-200 bg-white overflow-hidden">
+<div class="p-6">
+<div class="flex items-center justify-between">
+<h4 class="font-semibold text-gray-900">Group 2</h4>
+<span class="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">5 Dashboards</span>
+</div>
+<p class="mt-1 text-sm font-semibold text-yellow-600">89% Avg. Similarity</p>
+<ul class="mt-4 space-y-2 text-sm text-gray-500">
+<li class="truncate">Quarterly Sales Report v1</li>
+<li class="truncate">Sales Performance Q3</li>
+<li class="truncate">Regional Sales - Final</li>
+</ul>
+</div>
+<div class="border-t border-gray-200 bg-gray-50 px-6 py-4">
+<button class="w-full flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary/90">
+                                    View Details
+                                    <span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col rounded-xl border border-gray-200 bg-white overflow-hidden">
+<div class="p-6">
+<div class="flex items-center justify-between">
+<h4 class="font-semibold text-gray-900">Group 3</h4>
+<span class="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">4 Dashboards</span>
+</div>
+<p class="mt-1 text-sm font-semibold text-yellow-600">88% Avg. Similarity</p>
+<ul class="mt-4 space-y-2 text-sm text-gray-500">
+<li class="truncate">Campaign Analysis</li>
+<li class="truncate">Marketing ROI Dashboard</li>
+<li class="truncate">Ad Spend vs. Return</li>
+</ul>
+</div>
+<div class="border-t border-gray-200 bg-gray-50 px-6 py-4">
+<button class="w-full flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary/90">
+                                    View Details
+                                    <span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col rounded-xl border border-gray-200 bg-white overflow-hidden">
+<div class="p-6">
+<div class="flex items-center justify-between">
+<h4 class="font-semibold text-gray-900">Group 4</h4>
+<span class="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">6 Dashboards</span>
+</div>
+<p class="mt-1 text-sm font-semibold text-green-600">96% Avg. Similarity</p>
+<ul class="mt-4 space-y-2 text-sm text-gray-500">
+<li class="truncate">Warehouse Stock Levels</li>
+<li class="truncate">Inventory Overview</li>
+<li class="truncate">Daily Stock Report</li>
+<li class="truncate">Inventory Tracker v4</li>
+</ul>
+</div>
+<div class="border-t border-gray-200 bg-gray-50 px-6 py-4">
+<button class="w-full flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary/90">
+                                    View Details
+                                    <span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col rounded-xl border border-gray-200 bg-white overflow-hidden">
+<div class="p-6">
+<div class="flex items-center justify-between">
+<h4 class="font-semibold text-gray-900">Group 5</h4>
+<span class="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">3 Dashboards</span>
+</div>
+<p class="mt-1 text-sm font-semibold text-yellow-600">85% Avg. Similarity</p>
+<ul class="mt-4 space-y-2 text-sm text-gray-500">
+<li class="truncate">Employee Headcount</li>
+<li class="truncate">HR Attrition Analysis</li>
+<li class="truncate">Headcount by Dept</li>
+</ul>
+</div>
+<div class="border-t border-gray-200 bg-gray-50 px-6 py-4">
+<button class="w-full flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary/90">
+                                    View Details
+                                    <span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="lg:col-span-2 xl:col-span-1 flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 bg-transparent py-20 text-center">
+<div class="text-primary">
+<span class="material-symbols-outlined text-5xl">search_off</span>
+</div>
+<h4 class="mt-4 text-lg font-semibold text-gray-900">No Matching Groups</h4>
+<p class="mt-1 text-sm text-gray-500">Try adjusting your filters.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
