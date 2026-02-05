@@ -1,3 +1,5 @@
+import { getReportComparison, getUniqueReports } from './dataTransformUtils';
+
 export interface DAXQuery {
   id: number;
   label: string;
@@ -15,20 +17,38 @@ export interface ComparisonMetrics {
   missingInReport2: number;
 }
 
-export const COMPARISON_DATA = {
-  report1Name: 'Quarterly Sales Report v1',
-  report2Name: 'Sales Performance Q3',
-  metrics: {
-    similarityScore: 92,
-    report1Queries: 25,
-    report2Queries: 25,
-    totalUniqueQueries: 25,
-    similarQueries: 22,
-    dissimilarQueries: 4,
-    missingInReport1: 2,
-    missingInReport2: 2,
-  } as ComparisonMetrics,
-};
+/**
+ * Get comparison data between two reports
+ * @param report1Name - Name of the first report
+ * @param report2Name - Name of the second report
+ */
+export function getComparisonData(report1Name?: string, report2Name?: string) {
+  const reports = getUniqueReports();
+  
+  // Use provided reports or default to first two reports
+  const defaultReport1 = report1Name || reports[0] || 'Report 1';
+  const defaultReport2 = report2Name || reports[1] || 'Report 2';
+  
+  const metrics = getReportComparison(defaultReport1, defaultReport2);
+  
+  return {
+    report1Name: defaultReport1,
+    report2Name: defaultReport2,
+    metrics: metrics || {
+      similarityScore: 0,
+      report1Queries: 0,
+      report2Queries: 0,
+      totalUniqueQueries: 0,
+      similarQueries: 0,
+      dissimilarQueries: 0,
+      missingInReport1: 0,
+      missingInReport2: 0,
+    } as ComparisonMetrics,
+  };
+}
+
+// Default comparison data (using first available reports from backend)
+export const COMPARISON_DATA = getComparisonData();
 
 export const REPORT1_QUERIES: DAXQuery[] = [
   {

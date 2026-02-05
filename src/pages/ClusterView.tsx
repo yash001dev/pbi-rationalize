@@ -3,30 +3,52 @@ import Layout from '../components/Layout';
 import Breadcrumb from '../components/Breadcrumb';
 import HeatmapCell from '../components/HeatmapCell';
 import {
-  CLUSTER_INFO,
-  CLUSTER_DASHBOARDS,
-  SIMILARITY_MATRIX,
-  REDUNDANT_KPIS,
   KPI_GROUPS,
+  getClusterDashboards,
+  getSimilarityMatrix,
+  getRedundantKPIs,
 } from '../constants/clusterData';
+import { getReportsByCluster } from '../constants/dataTransformUtils';
 import { DASHBOARD_GROUPS } from '../constants/dashboardData';
 
+/**
+ * ClusterView - Dashboard Comparison Matrix
+ * 
+ * Displays a symmetric comparison matrix showing similarity between reports
+ * 
+ * API Field Mapping:
+ * - measure_count_report_1/2 → Total KPIs column
+ * - semantic_common_measures_count → Shared KPIs column  
+ * - semantic_unique_measures_report_1/2 → Unique KPIs column
+ * - final_similarity_percent → Matrix cell values
+ * 
+ * Matrix Rules:
+ * 1. Diagonal (same report): Always 100%
+ * 2. Off-diagonal (different reports): Symmetric, e.g., [A,B] = [B,A]
+ */
 export default function ClusterView() {
   const [searchParams] = useSearchParams();
-  const groupId = searchParams.get('groupId') || '2';
+  const groupId = searchParams.get('groupId') || '0';
+  const clusterId = parseInt(groupId);
   
   // Get the group data from DASHBOARD_GROUPS
   const selectedGroup = DASHBOARD_GROUPS.find(
-    (group) => group.id === parseInt(groupId)
+    (group) => group.id === clusterId
   );
+  
+  // Get cluster-specific data
+  const clusterReports = getReportsByCluster(clusterId);
+  const clusterDashboards = getClusterDashboards(clusterId);
+  const similarityMatrix = getSimilarityMatrix(clusterId);
+  const redundantKPIs = getRedundantKPIs(clusterId);
   
   // Fallback to default if group not found
   const groupInfo = selectedGroup || {
-    id: 2,
-    name: 'Group 2',
-    dashboardCount: 5,
-    avgSimilarity: 92,
-    dashboards: [],
+    id: clusterId,
+    name: `Cluster ${clusterId}`,
+    dashboardCount: clusterReports.length,
+    avgSimilarity: 0,
+    dashboards: clusterReports.slice(0, 4),
     color: 'yellow' as const,
   };
 
@@ -71,12 +93,15 @@ export default function ClusterView() {
           <div className="flex flex-col gap-4 rounded-lg border border-gray-200 bg-white p-6">
             <p className="text-sm font-medium text-gray-500">Most Redundant KPIs</p>
             <div className="flex flex-col gap-2">
-              {REDUNDANT_KPIS.map((kpi, index) => (
+              {redundantKPIs.slice(0, 5).map((kpi, index) => (
                 <div key={index} className="flex items-center justify-between text-sm">
                   <p className="font-medium text-gray-800">{kpi.name}</p>
-                  <p className="text-gray-500">Present in {kpi.count} dashboards</p>
+                  <p className="text-gray-500">Present in {kpi.count} comparisons</p>
                 </div>
               ))}
+              {redundantKPIs.length === 0 && (
+                <p className="text-sm text-gray-500 italic">No redundant KPIs found</p>
+              )}
             </div>
           </div>
         </div>
@@ -89,61 +114,81 @@ export default function ClusterView() {
             <div className="flex rounded-lg border border-gray-200 bg-white p-1.5">
               <div className="flex flex-col gap-1">
                 <div className="h-10"></div>
-                {CLUSTER_DASHBOARDS.map((dashboard, index) => (
+                {clusterReports.map((reportName, index) => (
                   <div
                     key={index}
                     className="flex h-[72px] items-center px-4 text-left text-sm font-medium text-gray-800 min-w-48 max-w-48 truncate"
+                    title={reportName}
                   >
-                    {dashboard.name}
+                    {reportName}
                   </div>
                 ))}
               </div>
-              <div className="flex flex-col w-full min-w-[720px]">
-                <div className="grid grid-cols-5 h-10">
-                  {CLUSTER_DASHBOARDS.map((dashboard, index) => (
+              <div className="flex flex-col w-full" style={{ minWidth: `${clusterReports.length * 144}px` }}>
+                <div className="h-10" style={{ display: 'grid', gridTemplateColumns: `repeat(${clusterReports.length}, minmax(0, 1fr))` }}>
+                  {clusterReports.map((reportName, index) => (
                     <div
                       key={index}
-                      className="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500"
+                      className="flex items-center justify-center px-2 text-center text-xs font-medium text-gray-500"
+                      title={reportName}
                     >
-                      {dashboard.name.split(' ')[0]}
+                      <div className="truncate max-w-full">{reportName}</div>
                     </div>
                   ))}
                 </div>
-                <div className="grid grid-cols-5 gap-1">
-                  {SIMILARITY_MATRIX.flat().map((value, index) => (
+                <div className="gap-1" style={{ display: 'grid', gridTemplateColumns: `repeat(${clusterReports.length}, minmax(0, 1fr))` }}>
+                  {similarityMatrix.flat().map((value, index) => (
                     <HeatmapCell key={index} value={value} />
                   ))}
                 </div>
               </div>
               <div className="flex flex-col gap-1 w-full max-w-[480px]">
                 <div className="grid grid-cols-4 h-10">
-                  <div className="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500">
+                  <div 
+                    className="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500"
+                    title="Total number of KPIs/measures in this report (measure_count_report)"
+                  >
                     Total KPIs
                   </div>
-                  <div className="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500">
+                  <div 
+                    className="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500"
+                    title="Common KPIs shared with other reports (semantic_common_measures_count)"
+                  >
                     Shared
                   </div>
-                  <div className="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500">
+                  <div 
+                    className="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500"
+                    title="Unique KPIs only in this report (semantic_unique_measures_report)"
+                  >
                     Unique
                   </div>
                   <div className="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500">
                     Action
                   </div>
                 </div>
-                {CLUSTER_DASHBOARDS.map((dashboard, index) => (
+                {clusterDashboards.map((dashboard, index) => (
                   <div key={index} className="grid grid-cols-4 gap-1">
-                    <div className="flex h-[72px] items-center justify-center rounded-md bg-gray-50 text-sm">
+                    <div 
+                      className="flex h-[72px] items-center justify-center rounded-md bg-gray-50 text-sm"
+                      title={`Total KPIs in ${dashboard.name}: ${dashboard.totalKPIs}`}
+                    >
                       {dashboard.totalKPIs}
                     </div>
-                    <div className="flex h-[72px] items-center justify-center rounded-md bg-gray-50 text-sm">
+                    <div 
+                      className="flex h-[72px] items-center justify-center rounded-md bg-gray-50 text-sm"
+                      title={`KPIs shared with other reports: ${dashboard.sharedKPIs}`}
+                    >
                       {dashboard.sharedKPIs}
                     </div>
-                    <div className="flex h-[72px] items-center justify-center rounded-md bg-gray-50 text-sm">
+                    <div 
+                      className="flex h-[72px] items-center justify-center rounded-md bg-gray-50 text-sm"
+                      title={`Unique KPIs only in ${dashboard.name}: ${dashboard.uniqueKPIs}`}
+                    >
                       {dashboard.uniqueKPIs}
                     </div>
                     <div className="flex h-[72px] items-center justify-center rounded-md bg-gray-50">
                       <Link
-                        to="/comparison"
+                        to={`/comparison?report1=${encodeURIComponent(dashboard.name)}&cluster=${clusterId}`}
                         className="text-blue-600 hover:underline text-sm font-bold"
                       >
                         View

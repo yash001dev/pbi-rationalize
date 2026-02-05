@@ -1,0 +1,911 @@
+/**
+ * Report Similarity Data - Raw data from backend
+ * This file contains the actual similarity analysis data between reports
+ */
+
+export interface ReportSimilarity {
+  cluster: number;
+  report_name_1: string;
+  report_name_2: string;
+  final_similarity_percent: number;
+  measure_count_report_1: number;
+  measure_count_report_2: number;
+  semantic_common_measures_count: number;
+  semantic_unique_measures_report_1: number;
+  semantic_unique_measures_report_2: number;
+}
+
+// Raw data from backend
+export const REPORT_SIMILARITY_DATA: ReportSimilarity[] = [
+  {
+    "cluster": 0,
+    "report_name_1": "Affine Org Utilization Report",
+    "report_name_2": "Affine Org_test_visual (1)",
+    "final_similarity_percent": 91.07,
+    "measure_count_report_1": 56,
+    "measure_count_report_2": 56,
+    "semantic_common_measures_count": 51,
+    "semantic_unique_measures_report_1": 4,
+    "semantic_unique_measures_report_2": 3
+  },
+  {
+    "cluster": 1,
+    "report_name_1": "Artistri Efficiency Analysis",
+    "report_name_2": "Artistri overview",
+    "final_similarity_percent": 30.0,
+    "measure_count_report_1": 8,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 3,
+    "semantic_unique_measures_report_1": 5,
+    "semantic_unique_measures_report_2": 7
+  },
+  {
+    "cluster": 1,
+    "report_name_1": "Artistri Efficiency Analysis",
+    "report_name_2": "Artistri Time-Based Performance",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 8,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 8,
+    "semantic_unique_measures_report_2": 10
+  },
+  {
+    "cluster": 1,
+    "report_name_1": "Artistri overview",
+    "report_name_2": "Artistri Time-Based Performance",
+    "final_similarity_percent": 30.0,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 3,
+    "semantic_unique_measures_report_1": 7,
+    "semantic_unique_measures_report_2": 7
+  },
+  {
+    "cluster": 5,
+    "report_name_1": "Department & Salary Analysis Dataset 2",
+    "report_name_2": "Financial & Performance Analytics Dataset 1",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 11,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 11
+  },
+  {
+    "cluster": 5,
+    "report_name_1": "Department & Salary Analysis Dataset 2",
+    "report_name_2": "Workforce & Department Analytics Dataset 1",
+    "final_similarity_percent": 18.18,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 11,
+    "semantic_common_measures_count": 2,
+    "semantic_unique_measures_report_1": 7,
+    "semantic_unique_measures_report_2": 9
+  },
+  {
+    "cluster": 5,
+    "report_name_1": "Financial & Performance Analytics Dataset 1",
+    "report_name_2": "Workforce & Department Analytics Dataset 1",
+    "final_similarity_percent": 36.36,
+    "measure_count_report_1": 11,
+    "measure_count_report_2": 11,
+    "semantic_common_measures_count": 4,
+    "semantic_unique_measures_report_1": 7,
+    "semantic_unique_measures_report_2": 7
+  },
+  {
+    "cluster": 6,
+    "report_name_1": "Life expectancy new_visual_test_removed",
+    "report_name_2": "Life expectancy new_visual_test",
+    "final_similarity_percent": 97.83,
+    "measure_count_report_1": 46,
+    "measure_count_report_2": 46,
+    "semantic_common_measures_count": 45,
+    "semantic_unique_measures_report_1": 0,
+    "semantic_unique_measures_report_2": 0
+  },
+  {
+    "cluster": 6,
+    "report_name_1": "Life expectancy new_visual_test_removed",
+    "report_name_2": "Life expectancy new",
+    "final_similarity_percent": 91.3,
+    "measure_count_report_1": 46,
+    "measure_count_report_2": 46,
+    "semantic_common_measures_count": 42,
+    "semantic_unique_measures_report_1": 3,
+    "semantic_unique_measures_report_2": 3
+  },
+  {
+    "cluster": 6,
+    "report_name_1": "Life expectancy new_visual_test_removed",
+    "report_name_2": "Life expectancy v202009",
+    "final_similarity_percent": 93.48,
+    "measure_count_report_1": 46,
+    "measure_count_report_2": 46,
+    "semantic_common_measures_count": 43,
+    "semantic_unique_measures_report_1": 2,
+    "semantic_unique_measures_report_2": 2
+  },
+  {
+    "cluster": 6,
+    "report_name_1": "Life expectancy new_visual_test",
+    "report_name_2": "Life expectancy new",
+    "final_similarity_percent": 93.48,
+    "measure_count_report_1": 46,
+    "measure_count_report_2": 46,
+    "semantic_common_measures_count": 43,
+    "semantic_unique_measures_report_1": 2,
+    "semantic_unique_measures_report_2": 2
+  },
+  {
+    "cluster": 6,
+    "report_name_1": "Life expectancy new_visual_test",
+    "report_name_2": "Life expectancy v202009",
+    "final_similarity_percent": 93.48,
+    "measure_count_report_1": 46,
+    "measure_count_report_2": 46,
+    "semantic_common_measures_count": 43,
+    "semantic_unique_measures_report_1": 2,
+    "semantic_unique_measures_report_2": 2
+  },
+  {
+    "cluster": 6,
+    "report_name_1": "Life expectancy new",
+    "report_name_2": "Life expectancy v202009",
+    "final_similarity_percent": 97.83,
+    "measure_count_report_1": 46,
+    "measure_count_report_2": 46,
+    "semantic_common_measures_count": 45,
+    "semantic_unique_measures_report_1": 0,
+    "semantic_unique_measures_report_2": 0
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "MACHINE-B",
+    "report_name_2": "Manufacturing-Machine",
+    "final_similarity_percent": 81.82,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 11,
+    "semantic_common_measures_count": 9,
+    "semantic_unique_measures_report_1": 1,
+    "semantic_unique_measures_report_2": 2
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "MACHINE-B",
+    "report_name_2": "Manufacturing-PLANT",
+    "final_similarity_percent": 72.73,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 11,
+    "semantic_common_measures_count": 8,
+    "semantic_unique_measures_report_1": 2,
+    "semantic_unique_measures_report_2": 3
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "MACHINE-B",
+    "report_name_2": "Report1- Plant Overview",
+    "final_similarity_percent": 10.0,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 1,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 9
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "MACHINE-B",
+    "report_name_2": "Report2-Product Focus",
+    "final_similarity_percent": 10.0,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 1,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 9
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "MACHINE-B",
+    "report_name_2": "Report3- Machine Focus",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 10,
+    "semantic_unique_measures_report_2": 10
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "MACHINE-B",
+    "report_name_2": "Report4- Time Intelligence",
+    "final_similarity_percent": 10.0,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 1,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 9
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "Manufacturing-Machine",
+    "report_name_2": "Manufacturing-PLANT",
+    "final_similarity_percent": 72.73,
+    "measure_count_report_1": 11,
+    "measure_count_report_2": 11,
+    "semantic_common_measures_count": 8,
+    "semantic_unique_measures_report_1": 3,
+    "semantic_unique_measures_report_2": 3
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "Manufacturing-Machine",
+    "report_name_2": "Report1- Plant Overview",
+    "final_similarity_percent": 9.09,
+    "measure_count_report_1": 11,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 1,
+    "semantic_unique_measures_report_1": 10,
+    "semantic_unique_measures_report_2": 9
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "Manufacturing-Machine",
+    "report_name_2": "Report2-Product Focus",
+    "final_similarity_percent": 9.09,
+    "measure_count_report_1": 11,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 1,
+    "semantic_unique_measures_report_1": 10,
+    "semantic_unique_measures_report_2": 9
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "Manufacturing-Machine",
+    "report_name_2": "Report3- Machine Focus",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 11,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 11,
+    "semantic_unique_measures_report_2": 10
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "Manufacturing-Machine",
+    "report_name_2": "Report4- Time Intelligence",
+    "final_similarity_percent": 9.09,
+    "measure_count_report_1": 11,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 1,
+    "semantic_unique_measures_report_1": 10,
+    "semantic_unique_measures_report_2": 9
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "Manufacturing-PLANT",
+    "report_name_2": "Report1- Plant Overview",
+    "final_similarity_percent": 18.18,
+    "measure_count_report_1": 11,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 2,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 8
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "Manufacturing-PLANT",
+    "report_name_2": "Report2-Product Focus",
+    "final_similarity_percent": 9.09,
+    "measure_count_report_1": 11,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 1,
+    "semantic_unique_measures_report_1": 10,
+    "semantic_unique_measures_report_2": 9
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "Manufacturing-PLANT",
+    "report_name_2": "Report3- Machine Focus",
+    "final_similarity_percent": 9.09,
+    "measure_count_report_1": 11,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 1,
+    "semantic_unique_measures_report_1": 10,
+    "semantic_unique_measures_report_2": 9
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "Manufacturing-PLANT",
+    "report_name_2": "Report4- Time Intelligence",
+    "final_similarity_percent": 9.09,
+    "measure_count_report_1": 11,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 1,
+    "semantic_unique_measures_report_1": 10,
+    "semantic_unique_measures_report_2": 9
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "Report1- Plant Overview",
+    "report_name_2": "Report2-Product Focus",
+    "final_similarity_percent": 40.0,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 4,
+    "semantic_unique_measures_report_1": 6,
+    "semantic_unique_measures_report_2": 6
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "Report1- Plant Overview",
+    "report_name_2": "Report3- Machine Focus",
+    "final_similarity_percent": 10.0,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 1,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 9
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "Report1- Plant Overview",
+    "report_name_2": "Report4- Time Intelligence",
+    "final_similarity_percent": 30.0,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 3,
+    "semantic_unique_measures_report_1": 7,
+    "semantic_unique_measures_report_2": 7
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "Report2-Product Focus",
+    "report_name_2": "Report3- Machine Focus",
+    "final_similarity_percent": 40.0,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 4,
+    "semantic_unique_measures_report_1": 6,
+    "semantic_unique_measures_report_2": 6
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "Report2-Product Focus",
+    "report_name_2": "Report4- Time Intelligence",
+    "final_similarity_percent": 30.0,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 3,
+    "semantic_unique_measures_report_1": 7,
+    "semantic_unique_measures_report_2": 7
+  },
+  {
+    "cluster": 7,
+    "report_name_1": "Report3- Machine Focus",
+    "report_name_2": "Report4- Time Intelligence",
+    "final_similarity_percent": 10.0,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 1,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 9
+  },
+  {
+    "cluster": 8,
+    "report_name_1": "Marketing-1",
+    "report_name_2": "Marketing-2",
+    "final_similarity_percent": 70.0,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 7,
+    "semantic_unique_measures_report_1": 2,
+    "semantic_unique_measures_report_2": 3
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Procurement-1",
+    "report_name_2": "Procurement-2",
+    "final_similarity_percent": 33.33,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 9,
+    "semantic_common_measures_count": 3,
+    "semantic_unique_measures_report_1": 6,
+    "semantic_unique_measures_report_2": 6
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Procurement-1",
+    "report_name_2": "Sample_SALES_Q1",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 8,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 8
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Procurement-1",
+    "report_name_2": "Sample_SALES_Q2",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 10
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Procurement-1",
+    "report_name_2": "Sample_SALES_Q3",
+    "final_similarity_percent": 11.11,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 8,
+    "semantic_common_measures_count": 1,
+    "semantic_unique_measures_report_1": 8,
+    "semantic_unique_measures_report_2": 7
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Procurement-1",
+    "report_name_2": "Sample_SALES_Q4",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 6,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 6
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Procurement-1",
+    "report_name_2": "Superstore Return tracker",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 11,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 11
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Procurement-1",
+    "report_name_2": "Superstore Sales after Return",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 12,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 12
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Procurement-1",
+    "report_name_2": "Superstore Sales Corporate",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 10
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Procurement-1",
+    "report_name_2": "Superstore Sales",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 9,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 9
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Procurement-2",
+    "report_name_2": "Sample_SALES_Q1",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 8,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 8
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Procurement-2",
+    "report_name_2": "Sample_SALES_Q2",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 10
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Procurement-2",
+    "report_name_2": "Sample_SALES_Q3",
+    "final_similarity_percent": 22.22,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 8,
+    "semantic_common_measures_count": 2,
+    "semantic_unique_measures_report_1": 7,
+    "semantic_unique_measures_report_2": 6
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Procurement-2",
+    "report_name_2": "Sample_SALES_Q4",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 6,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 6
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Procurement-2",
+    "report_name_2": "Superstore Return tracker",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 11,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 11
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Procurement-2",
+    "report_name_2": "Superstore Sales after Return",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 12,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 12
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Procurement-2",
+    "report_name_2": "Superstore Sales Corporate",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 10
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Procurement-2",
+    "report_name_2": "Superstore Sales",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 9,
+    "measure_count_report_2": 9,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 9
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q1",
+    "report_name_2": "Sample_SALES_Q2",
+    "final_similarity_percent": 50.0,
+    "measure_count_report_1": 8,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 5,
+    "semantic_unique_measures_report_1": 3,
+    "semantic_unique_measures_report_2": 5
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q1",
+    "report_name_2": "Sample_SALES_Q3",
+    "final_similarity_percent": 37.5,
+    "measure_count_report_1": 8,
+    "measure_count_report_2": 8,
+    "semantic_common_measures_count": 3,
+    "semantic_unique_measures_report_1": 5,
+    "semantic_unique_measures_report_2": 5
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q1",
+    "report_name_2": "Sample_SALES_Q4",
+    "final_similarity_percent": 50.0,
+    "measure_count_report_1": 8,
+    "measure_count_report_2": 6,
+    "semantic_common_measures_count": 4,
+    "semantic_unique_measures_report_1": 4,
+    "semantic_unique_measures_report_2": 2
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q1",
+    "report_name_2": "Superstore Return tracker",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 8,
+    "measure_count_report_2": 11,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 8,
+    "semantic_unique_measures_report_2": 11
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q1",
+    "report_name_2": "Superstore Sales after Return",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 8,
+    "measure_count_report_2": 12,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 8,
+    "semantic_unique_measures_report_2": 12
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q1",
+    "report_name_2": "Superstore Sales Corporate",
+    "final_similarity_percent": 10.0,
+    "measure_count_report_1": 8,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 1,
+    "semantic_unique_measures_report_1": 7,
+    "semantic_unique_measures_report_2": 9
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q1",
+    "report_name_2": "Superstore Sales",
+    "final_similarity_percent": 22.22,
+    "measure_count_report_1": 8,
+    "measure_count_report_2": 9,
+    "semantic_common_measures_count": 2,
+    "semantic_unique_measures_report_1": 6,
+    "semantic_unique_measures_report_2": 7
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q2",
+    "report_name_2": "Sample_SALES_Q3",
+    "final_similarity_percent": 30.0,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 8,
+    "semantic_common_measures_count": 3,
+    "semantic_unique_measures_report_1": 7,
+    "semantic_unique_measures_report_2": 5
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q2",
+    "report_name_2": "Sample_SALES_Q4",
+    "final_similarity_percent": 30.0,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 6,
+    "semantic_common_measures_count": 3,
+    "semantic_unique_measures_report_1": 7,
+    "semantic_unique_measures_report_2": 3
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q2",
+    "report_name_2": "Superstore Return tracker",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 11,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 10,
+    "semantic_unique_measures_report_2": 11
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q2",
+    "report_name_2": "Superstore Sales after Return",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 12,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 10,
+    "semantic_unique_measures_report_2": 12
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q2",
+    "report_name_2": "Superstore Sales Corporate",
+    "final_similarity_percent": 10.0,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 1,
+    "semantic_unique_measures_report_1": 9,
+    "semantic_unique_measures_report_2": 9
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q2",
+    "report_name_2": "Superstore Sales",
+    "final_similarity_percent": 20.0,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 9,
+    "semantic_common_measures_count": 2,
+    "semantic_unique_measures_report_1": 8,
+    "semantic_unique_measures_report_2": 7
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q3",
+    "report_name_2": "Sample_SALES_Q4",
+    "final_similarity_percent": 25.0,
+    "measure_count_report_1": 8,
+    "measure_count_report_2": 6,
+    "semantic_common_measures_count": 2,
+    "semantic_unique_measures_report_1": 6,
+    "semantic_unique_measures_report_2": 4
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q3",
+    "report_name_2": "Superstore Return tracker",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 8,
+    "measure_count_report_2": 11,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 8,
+    "semantic_unique_measures_report_2": 11
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q3",
+    "report_name_2": "Superstore Sales after Return",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 8,
+    "measure_count_report_2": 12,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 8,
+    "semantic_unique_measures_report_2": 12
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q3",
+    "report_name_2": "Superstore Sales Corporate",
+    "final_similarity_percent": 10.0,
+    "measure_count_report_1": 8,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 1,
+    "semantic_unique_measures_report_1": 7,
+    "semantic_unique_measures_report_2": 9
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q3",
+    "report_name_2": "Superstore Sales",
+    "final_similarity_percent": 22.22,
+    "measure_count_report_1": 8,
+    "measure_count_report_2": 9,
+    "semantic_common_measures_count": 2,
+    "semantic_unique_measures_report_1": 6,
+    "semantic_unique_measures_report_2": 7
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q4",
+    "report_name_2": "Superstore Return tracker",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 6,
+    "measure_count_report_2": 11,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 6,
+    "semantic_unique_measures_report_2": 11
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q4",
+    "report_name_2": "Superstore Sales after Return",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 6,
+    "measure_count_report_2": 12,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 6,
+    "semantic_unique_measures_report_2": 12
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q4",
+    "report_name_2": "Superstore Sales Corporate",
+    "final_similarity_percent": 10.0,
+    "measure_count_report_1": 6,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 1,
+    "semantic_unique_measures_report_1": 5,
+    "semantic_unique_measures_report_2": 9
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Sample_SALES_Q4",
+    "report_name_2": "Superstore Sales",
+    "final_similarity_percent": 22.22,
+    "measure_count_report_1": 6,
+    "measure_count_report_2": 9,
+    "semantic_common_measures_count": 2,
+    "semantic_unique_measures_report_1": 4,
+    "semantic_unique_measures_report_2": 7
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Superstore Return tracker",
+    "report_name_2": "Superstore Sales after Return",
+    "final_similarity_percent": 33.33,
+    "measure_count_report_1": 11,
+    "measure_count_report_2": 12,
+    "semantic_common_measures_count": 4,
+    "semantic_unique_measures_report_1": 7,
+    "semantic_unique_measures_report_2": 8
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Superstore Return tracker",
+    "report_name_2": "Superstore Sales Corporate",
+    "final_similarity_percent": 0.0,
+    "measure_count_report_1": 11,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 0,
+    "semantic_unique_measures_report_1": 11,
+    "semantic_unique_measures_report_2": 10
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Superstore Return tracker",
+    "report_name_2": "Superstore Sales",
+    "final_similarity_percent": 9.09,
+    "measure_count_report_1": 11,
+    "measure_count_report_2": 9,
+    "semantic_common_measures_count": 1,
+    "semantic_unique_measures_report_1": 10,
+    "semantic_unique_measures_report_2": 8
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Superstore Sales after Return",
+    "report_name_2": "Superstore Sales Corporate",
+    "final_similarity_percent": 8.33,
+    "measure_count_report_1": 12,
+    "measure_count_report_2": 10,
+    "semantic_common_measures_count": 1,
+    "semantic_unique_measures_report_1": 11,
+    "semantic_unique_measures_report_2": 9
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Superstore Sales after Return",
+    "report_name_2": "Superstore Sales",
+    "final_similarity_percent": 41.67,
+    "measure_count_report_1": 12,
+    "measure_count_report_2": 9,
+    "semantic_common_measures_count": 5,
+    "semantic_unique_measures_report_1": 7,
+    "semantic_unique_measures_report_2": 4
+  },
+  {
+    "cluster": 9,
+    "report_name_1": "Superstore Sales Corporate",
+    "report_name_2": "Superstore Sales",
+    "final_similarity_percent": 40.0,
+    "measure_count_report_1": 10,
+    "measure_count_report_2": 9,
+    "semantic_common_measures_count": 4,
+    "semantic_unique_measures_report_1": 6,
+    "semantic_unique_measures_report_2": 5
+  },
+  {
+    "cluster": 10,
+    "report_name_1": "Revenue Opportunities_test_visual",
+    "report_name_2": "Revenue Opportunities",
+    "final_similarity_percent": 100.0,
+    "measure_count_report_1": 4,
+    "measure_count_report_2": 4,
+    "semantic_common_measures_count": 4,
+    "semantic_unique_measures_report_1": 0,
+    "semantic_unique_measures_report_2": 0
+  }
+];
