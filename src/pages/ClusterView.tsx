@@ -110,14 +110,14 @@ export default function ClusterView() {
           <h3 className="text-xl font-bold text-gray-900">
             Dashboard Comparison Matrix
           </h3>
-          <div className="w-full overflow-x-auto">
+          <div className="w-full overflow-x-auto relative">
             <div className="flex rounded-lg border border-gray-200 bg-white p-1.5">
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1 sticky left-0 bg-white z-10">
                 <div className="h-10"></div>
                 {clusterReports.map((reportName, index) => (
                   <div
                     key={index}
-                    className="flex h-[72px] items-center px-4 text-left text-sm font-medium text-gray-800 min-w-48 max-w-48 truncate"
+                    className="flex h-[72px] items-center px-4 text-left text-sm font-medium text-gray-800 min-w-48 max-w-48 truncate bg-white"
                     title={reportName}
                   >
                     {reportName}
@@ -142,46 +142,46 @@ export default function ClusterView() {
                   ))}
                 </div>
               </div>
-              <div className="flex flex-col gap-1 w-full max-w-[480px]">
-                <div className="grid grid-cols-4 h-10">
+              <div className="flex flex-col gap-1 ml-1 shrink-0" style={{ width: '480px' }}>
+                <div className="grid grid-cols-4 h-10 gap-1">
                   <div 
-                    className="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500"
+                    className="flex items-center justify-center px-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500"
                     title="Total number of KPIs/measures in this report (measure_count_report)"
                   >
                     Total KPIs
                   </div>
                   <div 
-                    className="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500"
+                    className="flex items-center justify-center px-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500"
                     title="Common KPIs shared with other reports (semantic_common_measures_count)"
                   >
                     Shared
                   </div>
                   <div 
-                    className="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500"
+                    className="flex items-center justify-center px-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500"
                     title="Unique KPIs only in this report (semantic_unique_measures_report)"
                   >
                     Unique
                   </div>
-                  <div className="flex items-center justify-center px-4 text-center text-xs font-medium uppercase tracking-wider text-gray-500">
+                  <div className="flex items-center justify-center px-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500">
                     Action
                   </div>
                 </div>
                 {clusterDashboards.map((dashboard, index) => (
                   <div key={index} className="grid grid-cols-4 gap-1">
                     <div 
-                      className="flex h-[72px] items-center justify-center rounded-md bg-gray-50 text-sm"
+                      className="flex h-[72px] items-center justify-center rounded-md bg-gray-50 text-sm font-medium"
                       title={`Total KPIs in ${dashboard.name}: ${dashboard.totalKPIs}`}
                     >
                       {dashboard.totalKPIs}
                     </div>
                     <div 
-                      className="flex h-[72px] items-center justify-center rounded-md bg-gray-50 text-sm"
+                      className="flex h-[72px] items-center justify-center rounded-md bg-gray-50 text-sm font-medium"
                       title={`KPIs shared with other reports: ${dashboard.sharedKPIs}`}
                     >
                       {dashboard.sharedKPIs}
                     </div>
                     <div 
-                      className="flex h-[72px] items-center justify-center rounded-md bg-gray-50 text-sm"
+                      className="flex h-[72px] items-center justify-center rounded-md bg-gray-50 text-sm font-medium"
                       title={`Unique KPIs only in ${dashboard.name}: ${dashboard.uniqueKPIs}`}
                     >
                       {dashboard.uniqueKPIs}
