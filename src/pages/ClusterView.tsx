@@ -76,7 +76,7 @@ export default function ClusterView() {
               <span className="truncate">Back</span>
             </Link>
             <button className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-gray-200 text-gray-800 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-gray-300 transition-colors">
-              <span className="truncate">Dismiss Group</span>
+              <span className="text-center line-clamp-2">Dismiss Group</span>
             </button>
           </div>
         </div>
@@ -94,9 +94,9 @@ export default function ClusterView() {
             <p className="text-sm font-medium text-gray-500">Most Redundant KPIs</p>
             <div className="flex flex-col gap-2">
               {redundantKPIs.slice(0, 5).map((kpi, index) => (
-                <div key={index} className="flex items-center justify-between text-sm">
-                  <p className="font-medium text-gray-800">{kpi.name}</p>
-                  <p className="text-gray-500">Present in {kpi.count} comparisons</p>
+                <div key={index} className="flex items-center justify-between text-sm gap-2">
+                  <p className="font-medium text-gray-800 line-clamp-2 break-words flex-1">{kpi.name}</p>
+                  <p className="text-gray-500 whitespace-nowrap flex-shrink-0">Present in {kpi.count} comparisons</p>
                 </div>
               ))}
               {redundantKPIs.length === 0 && (
@@ -110,17 +110,17 @@ export default function ClusterView() {
           <h3 className="text-xl font-bold text-gray-900">
             Dashboard Comparison Matrix
           </h3>
-          <div className="w-full overflow-x-auto relative">
-            <div className="flex rounded-lg border border-gray-200 bg-white p-1.5">
-              <div className="flex flex-col gap-1 sticky left-0 bg-white z-10">
-                <div className="h-10"></div>
+          <div className="w-full overflow-x-auto rounded-lg border border-gray-200 bg-white">
+            <div className="flex p-1.5 relative">
+              <div className="flex flex-col gap-1 sticky left-0 bg-white z-10 pr-1.5" style={{ boxShadow: '2px 0 4px -2px rgba(0,0,0,0.1)' }}>
+                <div className="h-10 bg-white"></div>
                 {clusterReports.map((reportName, index) => (
                   <div
                     key={index}
-                    className="flex h-[72px] items-center px-4 text-left text-sm font-medium text-gray-800 min-w-48 max-w-48 truncate bg-white"
+                    className="flex h-[72px] items-center px-4 text-left text-sm font-medium text-gray-800 min-w-48 max-w-48 bg-white"
                     title={reportName}
                   >
-                    {reportName}
+                    <div className="line-clamp-2 break-words">{reportName}</div>
                   </div>
                 ))}
               </div>
@@ -132,7 +132,7 @@ export default function ClusterView() {
                       className="flex items-center justify-center px-2 text-center text-xs font-medium text-gray-500"
                       title={reportName}
                     >
-                      <div className="truncate max-w-full">{reportName}</div>
+                      <div className="line-clamp-2 break-words max-w-full">{reportName}</div>
                     </div>
                   ))}
                 </div>
@@ -142,27 +142,27 @@ export default function ClusterView() {
                   ))}
                 </div>
               </div>
-              <div className="flex flex-col gap-1 ml-1 shrink-0" style={{ width: '480px' }}>
+              <div className="flex flex-col gap-1 ml-1 shrink-0 bg-white" style={{ width: '480px' }}>
                 <div className="grid grid-cols-4 h-10 gap-1">
                   <div 
-                    className="flex items-center justify-center px-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500"
+                    className="flex items-center justify-center px-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 bg-white"
                     title="Total number of KPIs/measures in this report (measure_count_report)"
                   >
                     Total KPIs
                   </div>
                   <div 
-                    className="flex items-center justify-center px-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500"
+                    className="flex items-center justify-center px-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 bg-white"
                     title="Common KPIs shared with other reports (semantic_common_measures_count)"
                   >
                     Shared
                   </div>
                   <div 
-                    className="flex items-center justify-center px-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500"
+                    className="flex items-center justify-center px-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 bg-white"
                     title="Unique KPIs only in this report (semantic_unique_measures_report)"
                   >
                     Unique
                   </div>
-                  <div className="flex items-center justify-center px-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500">
+                  <div className="flex items-center justify-center px-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 bg-white">
                     Action
                   </div>
                 </div>
